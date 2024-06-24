@@ -1,10 +1,9 @@
 const http = require('http');
 const { exec } = require('child_process');
 
-const PHP_SERVER_PORT = 8000; // Porta su cui il server PHP sarà in ascolto
-const NODE_SERVER_PORT = 5000; // Porta su cui il server Node.js sarà in ascolto
+const PHP_SERVER_PORT = 8000; 
+const NODE_SERVER_PORT = 5000; 
 
-// Funzione per avviare il server PHP
 const startPHPServer = () => {
     exec(`php -S localhost:${PHP_SERVER_PORT} index.php`, (error, stdout, stderr) => {
         if (error) {
@@ -18,12 +17,9 @@ const startPHPServer = () => {
     });
 };
 
-// Avvio del server PHP
 startPHPServer();
 
-// Creazione del server Node.js
 const server = http.createServer((req, res) => {
-    // Inoltra la richiesta HTTP direttamente al server PHP
     const options = {
         hostname: 'localhost',
         port: PHP_SERVER_PORT,
@@ -40,7 +36,6 @@ const server = http.createServer((req, res) => {
     req.pipe(proxyReq, { end: true });
 });
 
-// Avvio del server Node.js
 server.listen(NODE_SERVER_PORT, () => {
-    console.log(`Server Node.js in esecuzione su http://localhost:${NODE_SERVER_PORT}`);
+    console.log(`Server listening on http://localhost:${NODE_SERVER_PORT}`);
 });
