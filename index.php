@@ -11,9 +11,9 @@ $fontSizeSmall = 20;
 $spacesBig = repeatString(' ', floor(($fontSizeBig - 4) / 2));
 $spacesSmall = repeatString(' ', floor(($fontSizeSmall - 5) / 2));
 
-echo $spacesBig . "Work in progress...\n\n";
+echo $spacesBig . "Wprk in progress....\n\n";
 
-echo $spacesSmall . "Work in progress...\n";
+echo $spacesSmall . "Simple Javascript-php server\n";
 
 echo $spacesSmall . "Work in progress...";
 ?>
